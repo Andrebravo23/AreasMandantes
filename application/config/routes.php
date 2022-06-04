@@ -64,3 +64,4 @@ $route['tipos-servicio/crear'] = 'tiposservicio/create';
 $route['tipos-servicio/eliminar/(:num)'] = "tiposservicio/delete/$1";
 $route['tipos-servicio/editar/(:num)'] = "tiposservicio/edit/$1";
 $route['tipos-servicio/actualizar'] = "tiposservicio/update";
+$route['tipos-servicio/mostrar'] = 'tiposservicio/show';

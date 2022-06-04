@@ -45,7 +45,7 @@
 										<td class="center"><?= $item['gls_tipo_servicio'] ?></td>
 										<td class="center">
 											<div class="btn-group">
-												<a item-data='<?= json_encode($item) ?>' data-toggle="modal" href="#my_modal" class="btn btn-xs btn-success show-data">
+												<a item-id='<?= $item['id_tipo_servicio'] ?>' data-toggle="modal" href="#my_modal" class="btn btn-xs btn-success show-data">
 													<i class="ace-icon fa fa-check bigger-120"></i>
 												</a>
 												<a href="<?= base_url('tipos-servicio/editar/'.$item['id_tipo_servicio']) ?>" class="btn btn-xs btn-info">
@@ -107,11 +107,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
         $('.show-data').click(function() {
-            let res = JSON.parse($(this).attr('item-data'));
-            $('#modal-id-ts').html('<b>ID del tipo de servicio:</b> ' + res['id_tipo_servicio']);
-            $('#modal-cod-ts').html('<b>Código del tipo de servicio:</b> ' + res['cod_tipo_servicio']);
-            $('#modal-des-ts').html('<b>Tipo de servicio:</b> ' + res['des_tipo_servicio']);
-            $('#modal-gls-ts').html('<b>GLS Tipo de servicio:</b> ' + res['gls_tipo_servicio']);
+            $.ajax({
+                url:'<?=base_url()?>tipos-servicio/mostrar/',
+                method: 'POST',
+                data: "id_tipo_servicio="+$(this).attr('item-id'),
+                success: function(response){
+                    response = JSON.parse(response);
+                    $('#modal-id-ts','#modal-cod-ts','#modal-des-t','#modal-gls-t').text('');
+                    $('#modal-id-ts').html('<b>ID del tipo de servicio:</b> ' + response["id_tipo_servicio"]);
+                    $('#modal-cod-ts').html('<b>Código del tipo de servicio:</b> ' + response['cod_tipo_servicio']);
+                    $('#modal-des-ts').html('<b>Tipo de servicio:</b> ' + response['des_tipo_servicio']);
+                    $('#modal-gls-ts').html('<b>GLS Tipo de servicio:</b> ' + response['gls_tipo_servicio']);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus, errorThrown);
+                }
+            });
         });
     </script>
 </html>

@@ -89,17 +89,17 @@ class TiposServicio extends CI_Controller {
         $this->load->view('amsa/tipos_servicio/mensaje_exito.php', $data);
     }
 
-    public function show($id)
+    public function show()
     {   
         $item = $this->comun_model->MantenerRegistroDesdeFuncion(
             'fn_select_tipo_servicio',
-            $id,
+            $this->input->post('id_tipo_servicio'),
             14,
             14,
             1,
             1,
             0
         );
-        return $item;
+        echo json_encode($item);
     }
 }
