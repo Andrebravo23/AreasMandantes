@@ -2,20 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AreasMandantes_model extends CI_Model {
-
-    public $id_areas_mandantes;
-    public $cod_area;
-    public $id_cliente;
-    public $id_subcliente;
-    public $id_pais ;
-    public $des_area;
-    public $gls_area;
-    public $fec_created;
-    public $usu_created;
-    public $fec_ultmod;
-    public $usu_ultmod;
-    public $active;
-
     public function list()
     {
         $query = $this->db->query('SELECT fn_listar_areas_mandantes(14, 14, 1, 1, null)');

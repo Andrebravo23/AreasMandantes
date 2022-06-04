@@ -57,3 +57,10 @@ $route['crear'] = 'areasmandantes/create';
 $route['eliminar/(:num)'] = "areasmandantes/delete/$1";
 $route['editar/(:num)'] = "areasmandantes/edit/$1";
 $route['actualizar'] = "areasmandantes/update";
+
+$route['tipos-servicio'] = 'tiposservicio/index';
+$route['tipos-servicio/formulario'] = 'tiposservicio/new';
+$route['tipos-servicio/crear'] = 'tiposservicio/create';
+$route['tipos-servicio/eliminar/(:num)'] = "tiposservicio/delete/$1";
+$route['tipos-servicio/editar/(:num)'] = "tiposservicio/edit/$1";
+$route['tipos-servicio/actualizar'] = "tiposservicio/update";

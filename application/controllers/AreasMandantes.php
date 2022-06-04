@@ -8,12 +8,13 @@ class AreasMandantes extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('areasmandantes_model', '', TRUE);
+        $this->load->model('comun_model', '', TRUE);
         $this->load->helper('url');
     }
 
     public function index()
     {
-        $data['list'] = $this->areasmandantes_model->list();
+        $data['list'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('fn_listar_areas_mandantes', 14, 14, 1, 1, 'null');
 		$this->load->view('amsa/areas_mandantes/index.php', $data);
     }
 
@@ -25,12 +26,19 @@ class AreasMandantes extends CI_Controller {
 
     public function create()
     {
-        $new = [
-            'cod_area' => $this->input->post('cod_area'),
-            'des_area' => $this->input->post('des_area'),
-            'gls_area' => $this->input->post('gls_area')
-        ];
-        $data['response'] = $this->areasmandantes_model->insert($new);
+        $cod_area = $this->input->post('cod_area');
+        $des_area = $this->input->post('des_area');
+        $gls_area = $this->input->post('gls_area');
+        $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
+                                            'fn_insert_areas_mandantes',
+                                            $cod_area,
+                                            14,
+                                            14,
+                                            1,
+                                            $des_area,
+                                            $gls_area,
+                                            1
+                                        );
         $this->load->view('amsa/areas_mandantes/confirmacion.php', $data);
     }
 
@@ -43,19 +51,34 @@ class AreasMandantes extends CI_Controller {
 
     public function update()
     {
-        $item = [
-            'id_areas_mandantes' => $this->input->post('id_areas_mandantes'),
-            'cod_area' => $this->input->post('cod_area'),
-            'des_area' => $this->input->post('des_area'),
-            'gls_area' => $this->input->post('gls_area')
-        ];
-        $data['response'] = $this->areasmandantes_model->update($item);
+        $id_areas_mandantes = $this->input->post('id_areas_mandantes');
+        $cod_area = $this->input->post('cod_area');
+        $des_area = $this->input->post('des_area');
+        $gls_area = $this->input->post('gls_area');
+        $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
+            'fn_update_areas_mandantes',
+            $id_areas_mandantes,
+            $cod_area,
+            14,
+            14,
+            1,
+            $des_area,
+            $gls_area,
+            1
+        );
         $this->load->view('amsa/areas_mandantes/confirmacion.php', $data);
     }
 
     public function delete($id)
     {
-        $data['response'] = $this->areasmandantes_model->delete($id);
+        $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
+            'fn_desactivar_areas_mandantes',
+            $id,
+            14,
+            14,
+            1,
+            1
+        );
         $this->load->view('amsa/areas_mandantes/confirmacion.php', $data);
     }
 }
