@@ -13,7 +13,7 @@ class TiposServicio extends CI_Controller {
 
     public function index()
     {   
-        $data['list'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('fn_listar_tipo_servicio', 14, 14, 1, 1, 'null');
+        $data['list'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_tipo_servicio', 14, 14, 1, 1, 'null');
 		$this->load->view('amsa/tipos_servicio/index.php', $data);
     }
 
@@ -29,7 +29,7 @@ class TiposServicio extends CI_Controller {
         $des_tipo_servicio = $this->input->post('des_tipo_servicio');
         $gls_tipo_servicio = $this->input->post('gls_tipo_servicio');
         $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
-                                            'fn_insert_tipo_servicio',
+                                            'planificacion.fn_insert_tipo_servicio',
                                             $cod_tipo_servicio,
                                             14,
                                             14,
@@ -44,7 +44,7 @@ class TiposServicio extends CI_Controller {
     public function edit($id)
     {   
         $item = $this->comun_model->MantenerRegistroDesdeFuncion(
-            'fn_select_tipo_servicio',
+            'planificacion.fn_select_tipo_servicio',
             $id,
             14,
             14,
@@ -63,7 +63,7 @@ class TiposServicio extends CI_Controller {
         $des_tipo_servicio = $this->input->post('des_tipo_servicio');
         $gls_tipo_servicio = $this->input->post('gls_tipo_servicio');
         $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
-            'fn_update_tipo_servicio',
+            'planificacion.fn_update_tipo_servicio',
             $id_tipo_servicio,
             $cod_tipo_servicio,
             14,
@@ -79,7 +79,7 @@ class TiposServicio extends CI_Controller {
     public function delete($id)
     {
         $data['response'] = $this->comun_model->MantenerRegistroDesdeFuncion(
-            'fn_desactivar_tipo_servicio',
+            'planificacion.fn_desactivar_tipo_servicio',
             $id,
             14,
             14,
@@ -92,7 +92,7 @@ class TiposServicio extends CI_Controller {
     public function show()
     {   
         $item = $this->comun_model->MantenerRegistroDesdeFuncion(
-            'fn_select_tipo_servicio',
+            'planificacion.fn_select_tipo_servicio',
             $this->input->post('id_tipo_servicio'),
             14,
             14,

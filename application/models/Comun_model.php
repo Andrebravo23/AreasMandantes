@@ -6,6 +6,7 @@ class Comun_model extends CI_Model {
     {
         $paramsToString = implode(', ', $params);
         $query = $this->db->query('SELECT '.$functionName.'('.$paramsToString.')');
+        $functionName = explode('.', $functionName)[1];
         $json_result = $query->result();
         $result = [];
         if ($json_result != null) {
@@ -20,6 +21,7 @@ class Comun_model extends CI_Model {
     {
         $paramsToString = "'" . implode ( "', '", $params) . "'";
         $query = $this->db->query('SELECT '.$functionName.'('.$paramsToString.')');
+        $functionName = explode('.', $functionName)[1];
         $json_result = $query->result()[0]->$functionName;
         $result = json_decode($json_result, true);
         return $result;

@@ -65,3 +65,11 @@ $route['tipos-servicio/eliminar/(:num)'] = "tiposservicio/delete/$1";
 $route['tipos-servicio/editar/(:num)'] = "tiposservicio/edit/$1";
 $route['tipos-servicio/actualizar'] = "tiposservicio/update";
 $route['tipos-servicio/mostrar'] = 'tiposservicio/show';
+
+$route['clasificacion-materiales'] = 'clasificacionmateriales/index';
+$route['clasificacion-materiales/formulario'] = 'clasificacionmateriales/new';
+$route['clasificacion-materiales/crear'] = 'clasificacionmateriales/create';
+$route['clasificacion-materiales/eliminar/(:num)'] = "clasificacionmateriales/delete/$1";
+$route['clasificacion-materiales/editar/(:num)'] = "clasificacionmateriales/edit/$1";
+$route['clasificacion-materiales/actualizar'] = "clasificacionmateriales/update";
+$route['clasificacion-materiales/mostrar'] = 'clasificacionmateriales/show';
