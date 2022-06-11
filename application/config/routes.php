@@ -73,3 +73,14 @@ $route['clasificacion-materiales/eliminar/(:num)'] = "clasificacionmateriales/de
 $route['clasificacion-materiales/editar/(:num)'] = "clasificacionmateriales/edit/$1";
 $route['clasificacion-materiales/actualizar'] = "clasificacionmateriales/update";
 $route['clasificacion-materiales/mostrar'] = 'clasificacionmateriales/show';
+
+$route['transportistas'] = 'transportistas/index';
+$route['materiales'] = 'materiales/index';
+
+$route['transportistas-material'] = 'transportistasmaterial/index';
+$route['transportistas-material/formulario'] = 'transportistasmaterial/new';
+$route['transportistas-material/crear'] = 'transportistasmaterial/create';
+$route['transportistas-material/eliminar/(:num)'] = "transportistasmaterial/delete/$1";
+$route['transportistas-material/editar/(:num)'] = "transportistasmaterial/edit/$1";
+$route['transportistas-material/actualizar'] = "transportistasmaterial/update";
+$route['transportistas-material/mostrar'] = 'transportistasmaterial/show';
