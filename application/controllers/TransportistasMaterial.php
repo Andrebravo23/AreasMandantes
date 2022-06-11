@@ -14,6 +14,8 @@ class TransportistasMaterial extends CI_Controller {
     public function index()
     {   
         $data['list'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_transportista_material', 14, 14, 1, 1, 'null');		
+        $data['materiales'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_suministros', 14, 14, 1, 1, 'null');
+        $data['transportistas'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_proveedores_transporte', 14, 14, 1, 1, 'null');
         $this->load->view('amsa/transportistas_material/index.php', $data);
     }
 
@@ -53,6 +55,8 @@ class TransportistasMaterial extends CI_Controller {
             0
         );
         $data = ['item' => $item, 'title' => 'Editar Transportista Material'];
+        $data['materiales'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_suministros', 14, 14, 1, 1, 'null');
+        $data['transportistas'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_proveedores_transporte', 14, 14, 1, 1, 'null');
         $this->load->view('amsa/transportistas_material/form.php', $data);
     }
 
@@ -89,6 +93,8 @@ class TransportistasMaterial extends CI_Controller {
 
     public function show()
     {   
+		$materiales = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_suministros', 14, 14, 1, 1, 'null');
+        $transportistas = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_listar_proveedores_transporte', 14, 14, 1, 1, 'null');
         $item = $this->comun_model->MantenerRegistroDesdeFuncion(
             'planificacion.fn_select_transportista_material',
             $this->input->post('id_transportista_material2'),
@@ -98,6 +104,10 @@ class TransportistasMaterial extends CI_Controller {
             1,
             0
         );
+        $i = array_search($item['id_proveedor_transporte'], array_column($transportistas,"id_proveedor_transporte2"));
+        $item['transportista'] = $transportistas[$i]["nombre_proveedor"];
+        $i = array_search($item['id_material'], array_column($materiales,"id_suministros"));
+        $item['material'] = $materiales[$i]["descripcion"];  
         echo json_encode($item);
     }
 }

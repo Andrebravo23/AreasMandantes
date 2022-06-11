@@ -30,8 +30,8 @@
 								<thead>
 									<tr>
 										<th class="detail-col">ID</th>
-										<th>ID. Transportista</th>
-										<th>ID. Material</th>
+										<th>Transportista</th>
+										<th>Material</th>
                                         <th>Acciones</th>
 									</tr>
 								</thead>
@@ -39,8 +39,17 @@
                                     <?php foreach ($list as $item) { ?>
 									<tr>
 										<td class="center"><?= $item['id_transportista_material2'] ?></td>
-										<td class="center"><?= $item['id_proveedor_transporte'] ?></td>
-										<td class="center"><?= $item['id_material'] ?></td>
+										<td class="center">
+                                            <?php
+                                                $i = array_search($item['id_proveedor_transporte'], array_column($transportistas,"id_proveedor_transporte2"));
+                                                echo $transportistas[$i]["nombre_proveedor"]; 
+                                            ?>
+                                        </td>
+										<td class="center">
+                                            <?php
+                                                $i = array_search($item['id_material'], array_column($materiales,"id_suministros"));
+                                                echo $materiales[$i]["descripcion"]; 
+                                            ?></td>
 										<td class="center">
 											<div class="btn-group">
 												<a item-id='<?= $item['id_transportista_material2'] ?>' data-toggle="modal" href="#my_modal" class="btn btn-xs btn-success show-data">
@@ -88,8 +97,10 @@
                     <div class="modal-body">
                         <div class="row" style="padding:0 15px">
                             <h5 class="col-xs-12" id="modal-id-tm"></h5>
-                            <h5 class="col-xs-6" id="modal-id-pt"></h5>
-                            <h5 class="col-xs-6" id="modal-id-mat"></h5>
+                            <h5 class="col-xs-8" id="modal-tran"></h5>
+                            <h5 class="col-xs-4" id="modal-id-tran"></h5>
+                            <h5 class="col-xs-8" id="modal-mat"></h5>
+                            <h5 class="col-xs-4" id="modal-id-mat"></h5>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -110,10 +121,12 @@
                 data: "id_transportista_material2="+$(this).attr('item-id'),
                 success: function(response){
                     response = JSON.parse(response);
-                    $('#modal-id-tm','#modal-id-pt','#modal-id-mat').text('');
+                    $('#modal-id-tm','#modal-tran','#modal-id-tran','#modal-mat','#modal-id-mat').text('');
                     $('#modal-id-tm').html('<b>ID. Transportista Material:</b> ' + response["id_transportista_material2"]);
-                    $('#modal-id-pt').html('<b>ID. del Proveedor de Transporte:</b> ' + response['id_proveedor_transporte']);
-                    $('#modal-id-mat').html('<b>ID. del Material:</b> ' + response['id_material']);
+                    $('#modal-tran').html('<b>Transportista:</b> ' + response['transportista']);
+                    $('#modal-id-tran').html('<b>ID. Transportista:</b> ' + response['id_proveedor_transporte']);
+                    $('#modal-mat').html('<b>Material:</b> ' + response['material']);
+                    $('#modal-id-mat').html('<b>ID. Material:</b> ' + response['id_material']);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus, errorThrown);

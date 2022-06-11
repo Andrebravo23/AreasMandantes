@@ -29,14 +29,32 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label for="id_proveedor_transporte">ID. del Transportista: </label>
-                                <input  class="form-control" type="text" name="id_proveedor_transporte" <?php if ($item != null) { echo 'value="'.$item['id_proveedor_transporte'].'"'; } ?>>
+                                <label for="id_proveedor_transporte">Transportista: </label>
+                                <select class="form-control" name="id_proveedor_transporte">
+                                    <option value=""></option>
+                                    <?php foreach ($transportistas as $transportista) { ?>
+                                        <option
+                                            value=<?php echo '"'.$transportista["id_proveedor_transporte2"].'"';
+                                                if ($item != null && $transportista["id_proveedor_transporte2"] == $item["id_proveedor_transporte"]) echo 'selected';?>>
+                                                <?=$transportista["nombre_proveedor"]?>
+                                        </option> 
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label for="id_material">ID. del Material: </label>
-                                <input  class="form-control" type="text" name="id_material" <?php if ($item != null) { echo 'value="'.$item['id_material'].'"'; } ?>>
+                                <label for="id_material">Material: </label>
+                                <select class="form-control" name="id_material">
+                                    <option value=""></option>
+                                    <?php foreach ($materiales as $material) { ?>
+                                        <option
+                                            value=<?php echo '"'.$material["id_suministros"].'"';
+                                                if ($item != null && $material['id_suministros'] == $item["id_material"]) echo 'selected';?>>
+                                                <?=$material["descripcion"]?>
+                                        </option> 
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-xs-12" style="margin-top: 20px;">
