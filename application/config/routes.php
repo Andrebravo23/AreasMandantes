@@ -81,3 +81,5 @@ $route['transportistas-material/eliminar/(:num)'] = "transportistasmaterial/dele
 $route['transportistas-material/editar/(:num)'] = "transportistasmaterial/edit/$1";
 $route['transportistas-material/actualizar'] = "transportistasmaterial/update";
 $route['transportistas-material/mostrar'] = 'transportistasmaterial/show';
+
+$route['servicios-formularios'] = 'serviciosformularios/index';
