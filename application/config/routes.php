@@ -83,3 +83,4 @@ $route['transportistas-material/actualizar'] = "transportistasmaterial/update";
 $route['transportistas-material/mostrar'] = 'transportistasmaterial/show';
 
 $route['servicios-formularios'] = 'serviciosformularios/index';
+$route['servicios-formularios/exportar'] = 'serviciosformularios/export';

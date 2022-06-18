@@ -38,6 +38,9 @@
                                 <div class="col-xs-2">
                                     <button type="submit" class="btn btn-primary">Buscar</button>
                                 </div>
+                                <div class="col-xs-10">
+                                    <a id="btn-export" href="<?=base_url('servicios-formularios/exportar?fecha='.$date)?>" target="_blank" class="btn btn-success pull-right"><i class="fa fa-file-excel-o me-2" aria-hidden="true"></i> Exportar</a>
+                                </div>
                             </form>
                             <table id="simple-table" class="table table-bordered table-hover">
 								<thead>
@@ -110,7 +113,4 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-
-    </script>
 </html>
