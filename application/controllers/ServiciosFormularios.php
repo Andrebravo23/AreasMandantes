@@ -21,7 +21,9 @@ class ServiciosFormularios extends CI_Controller {
     {  
         $data['date'] = $this->input->post('fecha');
         if ($data['date'] == '') {
-            $data['date'] = date('Y-m-d');
+            $data['date'] = date('d-m-Y');
+        } else {
+            $data['date'] = date("d-m-Y", strtotime($data['date']));
         }
         $data['list'] = $this->comun_model->ObtenerRegistrosDesdeFuncion('planificacion.fn_select_plan_diario_formularios', "'".$data['date']."'", 14, 14, 1, 1, 'null');		
         $this->load->view('amsa/servicios_formularios/index.php', $data);
